@@ -1,0 +1,189 @@
+<USER_REQUEST>
+Act as a senior AI engineer and multilingual full-stack developer.
+
+PROJECT: Government Scheme Finder — SchemeFinderAI / MITRA AI.
+
+CURRENT CRITICAL PROBLEMS:
+1. The assistant cannot reliably understand Telugu messages.
+2. It struggles with Telugu-English mixed (Tanglish) messages.
+3. It gives generic or irrelevant answers.
+4. It returns unrelated government schemes.
+5. The Listen button produces no sound.
+6. Telugu text-to-speech does not work.
+
+IMPORTANT:
+Do not rewrite the entire project.
+Inspect the existing implementation, identify the actual causes,
+and fix only the necessary files.
+
+==================================================
+PART 1: TELUGU LANGUAGE UNDERSTANDING
+==================================================
+
+Support:
+- Telugu script: నాకు స్కాలర్షిప్ కావాలి
+- Telugu written in English letters: naaku scholarship kavali
+- Telugu-English mixed: Nenu B.Tech chaduvuthunnanu,
+  naaku government job schemes kavali.
+- English
+- Hindi
+
+Detect the language of each user message automatically.
+
+Do not assume that a message is English simply because
+it contains English words.
+
+Understand common Telugu expressions and intents, including:
+- naaku / నాకు
+- kavali / కావాలి
+- ela / ఎలా
+- cheppu / చెప్పు
+- unnaya / ఉన్నాయా
+- nenu / నేను
+- chaduvuthunnanu / చదువుతున్నాను
+- udyogam / ఉద్యోగం
+- scholarship / స్కాలర్షిప్
+- raitu / రైతు
+- nirudyoga / నిరుద్యోగ
+- pathakam / పథకం
+
+Use proper language understanding, not just a few keyword matches.
+
+If a genuine AI model is configured, pass the original user message
+to the model and request a response in the user's preferred language.
+
+Preserve the original message. Do not silently translate it into
+English and lose its meaning.
+
+If no live AI model is configured, improve the deterministic fallback
+and clearly indicate its limitations.
+
+==================================================
+PART 2: CORRECT GOVERNMENT SCHEME ANSWERS
+==================================================
+
+The assistant must understand what the user is asking before
+searching the scheme database.
+
+Examples:
+
+User: "Hi, ela unnav?"
+Assistant: Reply naturally in Telugu or Tanglish.
+Do not display scheme cards.
+
+User: "Nenu B.Tech chaduvuthunnanu.
+Naaku scholarships unnaya?"
+
+Assistant: Understand that the user is a B.Tech student seeking
+scholarships. Ask for state, year of study, category, or income
+only when needed to identify relevant options.
+
+User: "India lo unemployed youth ki government schemes cheppu."
+
+Assistant: Explain relevant employment, skill-development,
+and self-employment programmes. Distinguish job opportunities
+from financial assistance schemes.
+
+Do not automatically claim the user is eligible.
+
+Use the existing database and verified official sources.
+Never invent scheme names, eligibility criteria, benefits,
+or official application URLs.
+
+Do not return random schemes to fill the results.
+
+==================================================
+PART 3: FIX TEXT-TO-SPEECH
+==================================================
+
+Inspect the existing Listen button and speech implementation.
+
+Use window.speechSynthesis and SpeechSynthesisUtterance
+for browser-based text-to-speech.
+
+Implement the following:
+
+1. Clicking Listen must speak the corresponding assistant message.
+2. Read only the selected assistant response.
+3. Support English, Telugu, and Hindi.
+4. Use language tags:
+   English: en-IN
+   Telugu: te-IN
+   Hindi: hi-IN
+5. Load voices asynchronously using getVoices() and voiceschanged.
+6. Select a matching voice when available.
+7. Handle missing voices, unsupported browsers, and playback errors.
+8. Show visible Speaking and Stop Speaking controls.
+9. Prevent duplicate event handlers and overlapping speech.
+10. Do not cancel speech immediately after starting it.
+11. Voice Audio OFF must disable automatic speech but must not
+    disable the manual Listen button.
+12. Voice Audio ON must enable automatic speech when supported.
+13. Changing the selected language must update the speech language.
+
+If a Telugu voice is not available in the browser, do not pretend
+Telugu audio is working.
+
+Display a clear message explaining that the device may need
+a Telugu speech voice installed or a different TTS provider.
+
+Do not use English pronunciation to pretend to speak Telugu.
+
+==================================================
+PART 4: VOICE INPUT
+==================================================
+
+Inspect the existing microphone functionality.
+
+Use SpeechRecognition or webkitSpeechRecognition where available.
+
+Support language selection:
+- te-IN for Telugu
+- en-IN for English
+- hi-IN for Hindi
+
+Preserve the recognized transcript without duplicating words.
+
+If browser recognition does not support the selected language,
+display a clear message and allow manual text input.
+
+Do not confuse speech recognition (microphone input) with
+text-to-speech (assistant audio output).
+
+==================================================
+PART 5: TEST BEFORE FINISHING
+==================================================
+
+Test the following:
+
+A. "నాకు స్కాలర్షిప్ కావాలి"
+B. "Naaku scholarship kavali"
+C. "Nenu B.Tech chaduvuthunnanu"
+D. "India lo unemployed youth ki schemes cheppu"
+E. "Hi, ela unnav?"
+F. An unrelated question
+G. A Telugu assistant response using Listen
+H. An English response using Listen
+I. A Hindi response using Listen
+J. Voice Audio OFF with manual Listen
+K. Missing Telugu voice
+L. Missing AI API key
+
+Verify that:
+- Different messages produce contextually different responses.
+- Telugu questions are not automatically treated as English.
+- Greetings do not produce scheme cards.
+- Scheme results come from the real database.
+- Audio errors are reported honestly.
+- Existing UI and backend routes still work.
+
+Run available automated tests and report actual results.
+Do not claim that physical audio playback was tested if it was not.
+
+At the end, list the files changed, the root causes found,
+any API or device requirements, and the remaining limitations.
+Do not start another long-running rewrite.
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-10-15T23:09:26+05:30.
+</ADDITIONAL_METADATA>

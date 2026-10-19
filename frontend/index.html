@@ -1,0 +1,1406 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Discover government benefits, check eligibility rules, and access official application portals in Telugu, Hindi, and English with voice assistance.">
+  <meta name="theme-color" content="#102A43">
+  <title>Government Scheme Finder | Multilingual Voice-First Benefits Discovery</title>
+  
+  <!-- Google Fonts: Plus Jakarta Sans, Inter, Noto Sans Telugu & Devanagari -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Noto+Sans+Telugu:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Accessibility Skip Link -->
+  <a href="#main-content" class="skip-to-content" data-i18n="skip_to_content">Skip to main content</a>
+
+  <!-- Global Announcement Bar -->
+  <div class="announcement-bar" role="region" aria-label="Official Information Notice">
+    <div class="container announcement-content">
+      <div class="announcement-left">
+        <span class="badge badge-accent" data-i18n="demo_badge">Demonstration Prototype</span>
+        <span class="announcement-text" data-i18n="announcement_text">Direct official links to verified government portals. No Aadhaar or sensitive passwords collected.</span>
+      </div>
+      <div class="announcement-right">
+        <button id="toggle-accessibility-btn" class="quick-link-btn" aria-haspopup="dialog" aria-expanded="false" title="Accessibility Settings">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="m4.93 4.93 4.24 4.24"></path><path d="m14.83 9.17 4.24-4.24"></path><path d="m14.83 14.83 4.24 4.24"></path><path d="m9.17 14.83-4.24 4.24"></path><circle cx="12" cy="12" r="4"></circle></svg>
+          <span data-i18n="accessibility_nav">Accessibility</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Navigation Header -->
+  <header class="site-header" id="site-header">
+    <div class="container header-container">
+      <!-- Brand Logo -->
+      <a href="#hero" class="brand-identity" aria-label="Government Scheme Finder Home">
+        <div class="brand-logo-icon" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+            <path d="M2 17l10 5 10-5"></path>
+            <path d="M2 12l10 5 10-5"></path>
+          </svg>
+        </div>
+        <div class="brand-titles">
+          <span class="brand-name">SchemeFinder<span class="brand-dot">AI</span></span>
+          <span class="brand-tagline" data-i18n="brand_subtitle">Citizen Benefits Discovery</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="desktop-nav" aria-label="Primary Navigation">
+        <ul class="nav-menu">
+          <li><a href="#hero" class="nav-link active" data-i18n="nav_home">Home</a></li>
+          <li><a href="#schemes" class="nav-link" data-i18n="nav_schemes">Discover Schemes</a></li>
+          <li><a href="#assistant" class="nav-link" data-i18n="nav_assistant">AI Assistant</a></li>
+          <li><a href="#profile-wizard" class="nav-link" data-i18n="nav_wizard">Eligibility Wizard</a></li>
+          <li><a href="#how-it-works" class="nav-link" data-i18n="nav_how_it_works">How It Works</a></li>
+        </ul>
+      </nav>
+
+      <!-- Header Action Controls -->
+      <div class="header-actions">
+        <!-- Language Selector -->
+        <div class="lang-selector-wrapper">
+          <label for="lang-select" class="visually-hidden" data-i18n="select_language">Select Language</label>
+          <div class="custom-select-container">
+            <svg class="globe-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+            <select id="lang-select" class="lang-select" aria-label="Interface Language">
+              <option value="en">English</option>
+              <option value="te">తెలుగు (Telugu)</option>
+              <option value="hi">हिंदी (Hindi)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Saved / Bookmarked Schemes Button -->
+        <button id="saved-schemes-btn" class="saved-btn icon-btn" aria-label="View Saved Schemes (0)" title="Saved Schemes">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+          </svg>
+          <span class="bookmark-count" id="bookmark-badge">0</span>
+        </button>
+
+        <!-- CTA Header Button -->
+        <a href="#schemes" class="btn btn-primary btn-sm header-cta" data-i18n="header_cta">Find My Schemes</a>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-nav-drawer">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-nav-drawer" class="mobile-nav-drawer" aria-hidden="true">
+      <div class="mobile-drawer-header">
+        <div class="brand-titles">
+          <span class="brand-name">SchemeFinder<span class="brand-dot">AI</span></span>
+          <span class="brand-tagline" data-i18n="brand_subtitle">Citizen Benefits Discovery</span>
+        </div>
+        <button id="mobile-drawer-close" class="close-btn" aria-label="Close navigation menu">✕</button>
+      </div>
+      <nav class="mobile-nav-list" aria-label="Mobile Navigation">
+        <a href="#hero" class="mobile-nav-link" data-i18n="nav_home">Home</a>
+        <a href="#schemes" class="mobile-nav-link" data-i18n="nav_schemes">Discover Schemes</a>
+        <a href="#assistant" class="mobile-nav-link" data-i18n="nav_assistant">AI Assistant</a>
+        <a href="#profile-wizard" class="mobile-nav-link" data-i18n="nav_wizard">Eligibility Wizard</a>
+        <a href="#how-it-works" class="mobile-nav-link" data-i18n="nav_how_it_works">How It Works</a>
+      </nav>
+      <div class="mobile-drawer-footer">
+        <div class="drawer-lang-selector">
+          <label class="form-label" data-i18n="select_language">Language / భాష / भाषा</label>
+          <div class="lang-pills">
+            <button type="button" class="lang-pill-btn active" data-lang="en">English</button>
+            <button type="button" class="lang-pill-btn" data-lang="te">తెలుగు</button>
+            <button type="button" class="lang-pill-btn" data-lang="hi">हिंदी</button>
+          </div>
+        </div>
+        <button id="open-accessibility-mobile" class="btn btn-outline btn-block mt-3" data-i18n="accessibility_nav">Accessibility Settings</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Wrapper -->
+  <main id="main-content">
+
+    <!-- 1. HERO SECTION -->
+    <section class="hero-section" id="hero">
+      <div class="container hero-container">
+        <!-- Hero Text Content -->
+        <div class="hero-content">
+          <div class="hero-badge animate-fade-in">
+            <span class="pulse-dot" aria-hidden="true"></span>
+            <span data-i18n="hero_pill">Multilingual • Voice-First • Privacy Preserving</span>
+          </div>
+          
+          <h1 class="hero-title animate-fade-in-up" data-i18n="hero_title">
+            Government Benefits, <br>
+            <span class="gradient-text">Made Simple.</span>
+          </h1>
+          
+          <p class="hero-description animate-fade-in-up delay-1" data-i18n="hero_desc">
+            Discover government schemes that may match your needs. Understand eligibility and find official information in your preferred language.
+          </p>
+
+          <!-- Primary & Secondary CTAs -->
+          <div class="hero-ctas animate-fade-in-up delay-2">
+            <a href="#schemes" class="btn btn-primary btn-lg shadow-glow">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              <span data-i18n="cta_find_schemes">Find My Schemes</span>
+            </a>
+            <a href="#assistant" class="btn btn-secondary btn-lg">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="22"></line></svg>
+              <span data-i18n="cta_talk_assistant">Talk to AI Assistant</span>
+            </a>
+          </div>
+
+          <!-- Trust Badges & Metrics -->
+          <div class="hero-trust-bar animate-fade-in-up delay-3">
+            <div class="trust-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+              <span data-i18n="trust_privacy">No Aadhaar or sensitive passwords asked</span>
+            </div>
+            <div class="trust-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+              <span data-i18n="trust_speed">Instant match in under 60 seconds</span>
+            </div>
+            <div class="trust-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+              <span data-i18n="trust_official">Official .gov.in verified portals</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Custom Illustration (Vector SVG with Floating Badges) -->
+        <div class="hero-visual animate-fade-in-up delay-1">
+          <div class="visual-wrapper">
+            <div class="illustration-card-canvas">
+              <!-- Custom SVG Architecture Illustration -->
+              <svg class="hero-svg" viewBox="0 0 520 440" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Connected Digital Government Benefits Graphic">
+                <!-- Soft Glow Gradients -->
+                <defs>
+                  <linearGradient id="primaryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#4F46E5" />
+                    <stop offset="100%" stop-color="#0D9488" />
+                  </linearGradient>
+                  <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#FFFFFF" />
+                    <stop offset="100%" stop-color="#F8FAFC" />
+                  </linearGradient>
+                  <linearGradient id="tealGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#0D9488" />
+                    <stop offset="100%" stop-color="#14B8A6" />
+                  </linearGradient>
+                  <filter id="shadowFilter" x="-10%" y="-10%" width="120%" height="130%" filterUnits="userSpaceOnUse">
+                    <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#102A43" flood-opacity="0.12" />
+                  </filter>
+                </defs>
+
+                <!-- Background Subtle Circuit / Flow Lines -->
+                <path d="M80 220 H 440" stroke="#E2E8F0" stroke-width="2" stroke-dasharray="6 6" />
+                <path d="M260 80 V 380" stroke="#E2E8F0" stroke-width="2" stroke-dasharray="6 6" />
+                <circle cx="260" cy="220" r="160" stroke="#E2E8F0" stroke-width="1.5" stroke-dasharray="8 8" />
+
+                <!-- Central Hub Card: Digital Citizen Portal -->
+                <rect x="170" y="140" width="180" height="160" rx="20" fill="url(#cardGrad)" stroke="#E2E8F0" stroke-width="2" filter="url(#shadowFilter)" />
+                <circle cx="260" cy="195" r="32" fill="#EEF2FF" />
+                <!-- Emblem / Citizen Icon -->
+                <path d="M260 178 a12 12 0 1 0 0 24 a12 12 0 0 0 0-24 z M244 216 c0-8.8 7.2-16 16-16 s16 7.2 16 16 z" fill="#4F46E5" />
+                <rect x="195" y="240" width="130" height="8" rx="4" fill="#E2E8F0" />
+                <rect x="215" y="255" width="90" height="8" rx="4" fill="#0D9488" />
+                <rect x="235" y="270" width="50" height="6" rx="3" fill="#94A3B8" />
+
+                <!-- Floating Satellite Node 1: Agriculture & Direct Benefit (Top Left) -->
+                <g class="float-node-1">
+                  <rect x="40" y="60" width="140" height="64" rx="14" fill="#FFFFFF" stroke="#CCFBF1" stroke-width="2" filter="url(#shadowFilter)" />
+                  <circle cx="68" cy="92" r="16" fill="#CCFBF1" />
+                  <!-- Sprout / Agri Icon -->
+                  <path d="M68 84 v16 M68 92 c-4 0-8-3-8-8 0-4 4-8 8-8 0 4 0 8 0 16 z M68 96 c4 0 8-3 8-7 0-4-4-7-8-7" stroke="#0D9488" stroke-width="2" stroke-linecap="round" />
+                  <rect x="94" y="80" width="70" height="7" rx="3.5" fill="#102A43" />
+                  <rect x="94" y="93" width="50" height="6" rx="3" fill="#0D9488" />
+                </g>
+
+                <!-- Floating Satellite Node 2: Education & Scholarships (Top Right) -->
+                <g class="float-node-2">
+                  <rect x="340" y="70" width="145" height="64" rx="14" fill="#FFFFFF" stroke="#EEF2FF" stroke-width="2" filter="url(#shadowFilter)" />
+                  <circle cx="368" cy="102" r="16" fill="#EEF2FF" />
+                  <!-- Graduation Cap -->
+                  <path d="M358 100 l10-5 10 5 -10 5 -10-5 z M362 104 v6 c0 3 3 5 6 5 s6-2 6-5 v-6" stroke="#4F46E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                  <rect x="394" y="90" width="75" height="7" rx="3.5" fill="#102A43" />
+                  <rect x="394" y="103" width="50" height="6" rx="3" fill="#4F46E5" />
+                </g>
+
+                <!-- Floating Satellite Node 3: Healthcare & Ayushman (Bottom Left) -->
+                <g class="float-node-3">
+                  <rect x="35" y="290" width="150" height="64" rx="14" fill="#FFFFFF" stroke="#FEE2E2" stroke-width="2" filter="url(#shadowFilter)" />
+                  <circle cx="65" cy="322" r="16" fill="#FEE2E2" />
+                  <!-- Medical Cross -->
+                  <path d="M65 314 v16 M57 322 h16" stroke="#EF4444" stroke-width="2.5" stroke-linecap="round" />
+                  <rect x="92" y="310" width="75" height="7" rx="3.5" fill="#102A43" />
+                  <rect x="92" y="323" width="55" height="6" rx="3" fill="#EF4444" />
+                </g>
+
+                <!-- Floating Satellite Node 4: MSME Loans & Business (Bottom Right) -->
+                <g class="float-node-4">
+                  <rect x="335" y="280" width="155" height="64" rx="14" fill="#FFFFFF" stroke="#FEF3C7" stroke-width="2" filter="url(#shadowFilter)" />
+                  <circle cx="365" cy="312" r="16" fill="#FEF3C7" />
+                  <!-- Rupee / Briefcase -->
+                  <path d="M359 308 h12 M359 312 h10 M363 308 c3 0 5 1 5 3.5 s-2 3.5-5 3.5 l7 7" stroke="#D97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                  <rect x="392" y="300" width="80" height="7" rx="3.5" fill="#102A43" />
+                  <rect x="392" y="313" width="60" height="6" rx="3" fill="#D97706" />
+                </g>
+
+                <!-- Connection Curved Arrows -->
+                <path d="M180 92 Q 220 92 235 140" stroke="#0D9488" stroke-width="2" fill="none" stroke-dasharray="4 4" />
+                <path d="M340 102 Q 300 102 285 140" stroke="#4F46E5" stroke-width="2" fill="none" stroke-dasharray="4 4" />
+                <path d="M185 322 Q 220 322 235 300" stroke="#EF4444" stroke-width="2" fill="none" stroke-dasharray="4 4" />
+                <path d="M335 312 Q 300 312 285 300" stroke="#D97706" stroke-width="2" fill="none" stroke-dasharray="4 4" />
+              </svg>
+            </div>
+
+            <!-- Overlaid Interactive Match Pill -->
+            <div class="hero-floating-card shadow-lg animate-float">
+              <div class="card-pill-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+              </div>
+              <div class="card-pill-text">
+                <span class="pill-label" data-i18n="hero_pill_match">Personalized Match Found</span>
+                <span class="pill-title">PM-KISAN: ₹6,000 / Year DBT</span>
+              </div>
+              <span class="badge badge-success" data-i18n="badge_match_pct">96% Match</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. INTERACTIVE AI ASSISTANT SECTION -->
+    <section class="section assistant-section" id="assistant">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag" data-i18n="assistant_tag">Voice-First AI Discovery</span>
+          <h2 class="section-title" data-i18n="assistant_title">Let's Find Your Benefits</h2>
+          <p class="section-subtitle" data-i18n="assistant_subtitle">
+            Speak or type in Telugu, Hindi, or English. Tell us about your occupation, family, state, or financial need, and our assistant will instantly find matching programs.
+          </p>
+        </div>
+
+        <div class="assistant-card shadow-xl">
+          <!-- Assistant Top Header Bar -->
+          <div class="assistant-top-bar">
+            <div class="assistant-agent-info">
+              <div class="agent-avatar" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path>
+                  <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                  <line x1="12" y1="19" x2="12" y2="22"></line>
+                </svg>
+              </div>
+              <div>
+                <div class="agent-title-row">
+                  <h3 class="agent-name" data-i18n="agent_name">Mitra AI Citizen Copilot</h3>
+                  <span class="agent-badge">AI Assistant</span>
+                </div>
+                <span class="agent-status" id="agent-status-text" data-i18n="agent_ready">Ready • Browser Speech Enabled</span>
+              </div>
+            </div>
+
+            <!-- Voice Language Selection Pills -->
+            <div class="voice-lang-control">
+              <span class="control-label" data-i18n="speak_in">Language:</span>
+              <div class="button-toggle-group" role="group" aria-label="Speech Language">
+                <button type="button" class="btn-toggle active" data-voice-lang="en-IN" id="btn-lang-en">English</button>
+                <button type="button" class="btn-toggle" data-voice-lang="te-IN" id="btn-lang-te">తెలుగు</button>
+                <button type="button" class="btn-toggle" data-voice-lang="hi-IN" id="btn-lang-hi">हिंदी</button>
+              </div>
+            </div>
+
+            <!-- Assistant Action Controls: TTS, Stop Speech, Clear Chat -->
+            <div class="assistant-actions-bar">
+              <button id="tts-toggle-btn" class="icon-toggle-btn" aria-pressed="true" title="Text-to-Speech Voice Response">
+                <svg class="speaker-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+                <span class="tts-status-label" id="tts-label" data-i18n="tts_on">Voice Audio: ON</span>
+              </button>
+              <button type="button" id="stop-speech-btn" class="btn-icon-subtle" title="Stop voice speech" aria-label="Stop audio response" style="display:none;">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><rect x="4" y="4" width="16" height="16" rx="2"></rect></svg>
+                <span data-i18n="btn_stop_audio">Stop Audio</span>
+              </button>
+              <button type="button" id="clear-chat-btn" class="btn-icon-subtle" title="Clear conversation history" aria-label="Clear chat">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+                <span data-i18n="btn_clear_chat">Clear Chat</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Conversational Message Thread -->
+          <div class="chat-thread-container" id="assistant-chat-thread" role="log" aria-live="polite">
+            <!-- Initial Welcome Message from Assistant -->
+            <div class="chat-msg ai-msg" id="assistant-welcome-msg">
+              <div class="chat-avatar" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="22"></line></svg>
+              </div>
+              <div class="chat-bubble ai-bubble">
+                <div class="chat-sender-name">Mitra AI</div>
+                <div class="chat-text" id="welcome-chat-text" data-i18n="assistant_welcome_text">
+                  Hello! I am Mitra, your citizen benefit assistant. Tell me about your profession, family income, state, or financial need in Telugu, Hindi, or English. You can speak using the microphone or type below.
+                </div>
+                <div class="chat-msg-actions">
+                  <button type="button" class="btn-chat-action btn-listen-msg" title="Listen aloud">
+                    <span class="listen-icon">🔊</span> <span class="listen-label" data-i18n="btn_listen">Listen</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Typing / Analyzing Indicator (shown while processing) -->
+            <div class="chat-msg ai-msg typing-msg" id="assistant-typing-indicator" style="display:none;" aria-hidden="true">
+              <div class="chat-avatar" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+              </div>
+              <div class="chat-bubble ai-bubble typing-bubble">
+                <span class="typing-dot"></span>
+                <span class="typing-dot"></span>
+                <span class="typing-dot"></span>
+                <span class="typing-text" data-i18n="agent_processing">Analyzing eligibility rules...</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Central Voice Interaction Area -->
+          <div class="voice-center-stage">
+            <div class="mic-button-container">
+              <div class="mic-pulse-ring" id="mic-pulse-ring" aria-hidden="true"></div>
+              <button id="mic-btn" class="mic-main-btn" aria-label="Start voice input" title="Click to speak">
+                <svg class="mic-icon" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path>
+                  <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                  <line x1="12" y1="19" x2="12" y2="22"></line>
+                </svg>
+              </button>
+            </div>
+
+            <!-- Explicit Start / Stop Voice Listening Control -->
+            <div class="voice-controls-toolbar">
+              <button type="button" id="voice-action-btn" class="voice-toggle-btn" aria-label="Start Listening">
+                <span class="voice-btn-dot" aria-hidden="true"></span>
+                <span id="voice-btn-label" data-i18n="btn_start_listening">Start Listening</span>
+              </button>
+            </div>
+
+            <p class="mic-instruction" id="mic-instruction" data-i18n="mic_prompt">
+              Click the microphone and speak your situation, or pick an example prompt below.
+            </p>
+
+            <!-- Audio Waveform Visualizer (Animated while listening) -->
+            <div class="audio-wave-bars" id="audio-wave-bars" aria-hidden="true">
+              <span class="wave-bar"></span>
+              <span class="wave-bar"></span>
+              <span class="wave-bar"></span>
+              <span class="wave-bar"></span>
+              <span class="wave-bar"></span>
+              <span class="wave-bar"></span>
+              <span class="wave-bar"></span>
+              <span class="wave-bar"></span>
+            </div>
+
+            <!-- Live Interim Transcript Pill (visible during speech) -->
+            <div class="live-transcript-pill" id="live-transcript-badge" style="display:none;" aria-live="polite">
+              <span class="live-indicator-dot"></span>
+              <span id="live-transcript-text">Listening...</span>
+            </div>
+          </div>
+
+          <!-- Text Fallback Input Container -->
+          <div class="assistant-input-box">
+            <form id="assistant-form" class="assistant-form" action="javascript:void(0);">
+              <div class="input-wrapper">
+                <input 
+                  type="text" 
+                  id="assistant-text-input" 
+                  class="assistant-text-field" 
+                  placeholder="e.g. Farmer with 2 acres in Telangana seeking income support..." 
+                  data-i18n-ph="assistant_placeholder"
+                  aria-label="Ask about government schemes"
+                  autocomplete="off"
+                >
+                <button type="button" id="clear-input-btn" class="clear-input-btn" aria-label="Clear input" style="display:none;">✕</button>
+              </div>
+              <button type="submit" id="assistant-submit-btn" class="btn btn-primary" aria-label="Submit search query">
+                <span data-i18n="btn_ask">Ask Assistant</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+              </button>
+            </form>
+          </div>
+
+          <!-- Clickable Example Suggestion Chips -->
+          <div class="assistant-suggestions">
+            <span class="suggestions-label" data-i18n="try_asking">Try asking:</span>
+            <div class="suggestion-chips" id="suggestion-chips">
+              <button type="button" class="chip-btn" data-query="Farmer with 2 acres in Telangana seeking income support">
+                🌾 <span data-i18n="chip_farmer">Farmer with 2 acres in Telangana</span>
+              </button>
+              <button type="button" class="chip-btn" data-query="College student looking for post-matric scholarship">
+                🎓 <span data-i18n="chip_student">College student seeking scholarship</span>
+              </button>
+              <button type="button" class="chip-btn" data-query="Woman entrepreneur starting small handicraft business">
+                👩‍💼 <span data-i18n="chip_woman_business">Woman entrepreneur starting business</span>
+              </button>
+              <button type="button" class="chip-btn" data-query="Senior citizen looking for free hospital health insurance">
+                🏥 <span data-i18n="chip_health">Senior citizen health coverage</span>
+              </button>
+              <button type="button" class="chip-btn" data-query="Street vendor needing collateral free loan">
+                🛵 <span data-i18n="chip_vendor">Street vendor working capital loan</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Backward-compatible Response Area (Updated alongside chat bubbles) -->
+          <div class="assistant-response-area" id="assistant-response-area" style="display:none;">
+            <div class="response-card" id="response-card">
+              <div class="response-header">
+                <div class="response-title-group">
+                  <span class="response-icon">💡</span>
+                  <strong class="response-title" id="response-title">Assistant Analysis</strong>
+                </div>
+                <div class="response-actions">
+                  <button type="button" id="speak-response-btn" class="btn-text-sm" title="Replay voice explanation">
+                    🔊 <span data-i18n="btn_listen">Listen</span>
+                  </button>
+                  <button type="button" id="apply-to-wizard-btn" class="btn btn-outline btn-sm">
+                    ⚡ <span data-i18n="btn_sync_profile">Auto-fill Eligibility Wizard</span>
+                  </button>
+                </div>
+              </div>
+              <div class="response-body" id="response-text-content"></div>
+              <div class="response-matched-schemes" id="response-matched-pills"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. USER PROFILE FORM (ELIGIBILITY WIZARD) -->
+    <section class="section wizard-section" id="profile-wizard">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag" data-i18n="wizard_tag">Personalized Matching</span>
+          <h2 class="section-title" data-i18n="wizard_title">Check Your Exact Eligibility Match</h2>
+          <p class="section-subtitle" data-i18n="wizard_subtitle">
+            Answer 4 simple questions. Your answers stay in your local browser and are evaluated securely against public criteria rules.
+          </p>
+        </div>
+
+        <div class="wizard-container shadow-xl">
+          <!-- Wizard Stepper Indicator -->
+          <div class="stepper-bar" role="tablist" aria-label="Eligibility Form Steps">
+            <div class="step-indicator active" id="step-indicator-1" data-step="1">
+              <div class="step-bubble">1</div>
+              <div class="step-info">
+                <span class="step-num" data-i18n="step_1_num">Step 1</span>
+                <span class="step-name" data-i18n="step_1_name">Demographics</span>
+              </div>
+            </div>
+            <div class="step-line"></div>
+            <div class="step-indicator" id="step-indicator-2" data-step="2">
+              <div class="step-bubble">2</div>
+              <div class="step-info">
+                <span class="step-num" data-i18n="step_2_num">Step 2</span>
+                <span class="step-name" data-i18n="step_2_name">Occupation & Income</span>
+              </div>
+            </div>
+            <div class="step-line"></div>
+            <div class="step-indicator" id="step-indicator-3" data-step="3">
+              <div class="step-bubble">3</div>
+              <div class="step-info">
+                <span class="step-num" data-i18n="step_3_num">Step 3</span>
+                <span class="step-name" data-i18n="step_3_name">Category & Needs</span>
+              </div>
+            </div>
+            <div class="step-line"></div>
+            <div class="step-indicator" id="step-indicator-4" data-step="4">
+              <div class="step-bubble">4</div>
+              <div class="step-info">
+                <span class="step-num" data-i18n="step_4_num">Step 4</span>
+                <span class="step-name" data-i18n="step_4_name">Review & Match</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Wizard Form Panels -->
+          <form id="wizard-form" class="wizard-form" action="javascript:void(0);" novalidate>
+
+            <!-- STEP 1: DEMOGRAPHICS -->
+            <div class="wizard-step-panel active" id="wizard-step-1" role="tabpanel" aria-labelledby="step-indicator-1">
+              <div class="step-panel-header">
+                <h3 class="panel-heading" data-i18n="step1_heading">Tell us about your age, gender, and state</h3>
+                <p class="panel-sub" data-i18n="step1_sub">Many government programs have age limits or are specific to your domicile state.</p>
+              </div>
+
+              <div class="form-grid">
+                <!-- Age Input -->
+                <div class="form-group">
+                  <label for="user-age" class="form-label">
+                    <span data-i18n="label_age">Your Age (Years)</span> <span class="required">*</span>
+                  </label>
+                  <div class="input-with-hint">
+                    <input type="number" id="user-age" class="form-input" min="5" max="105" placeholder="e.g. 24" required>
+                    <span class="field-hint" data-i18n="hint_age">Between 5 and 100 years</span>
+                  </div>
+                  <div class="error-feedback" id="user-age-error"></div>
+                </div>
+
+                <!-- Gender Select -->
+                <div class="form-group">
+                  <label for="user-gender" class="form-label">
+                    <span data-i18n="label_gender">Gender</span> <span class="required">*</span>
+                  </label>
+                  <select id="user-gender" class="form-select" required>
+                    <option value="" disabled selected data-i18n="select_option">-- Select Gender --</option>
+                    <option value="female" data-i18n="gender_female">Female</option>
+                    <option value="male" data-i18n="gender_male">Male</option>
+                    <option value="transgender" data-i18n="gender_trans">Transgender</option>
+                    <option value="any" data-i18n="gender_other">Prefer not to say</option>
+                  </select>
+                  <div class="error-feedback" id="user-gender-error"></div>
+                </div>
+
+                <!-- State Select -->
+                <div class="form-group full-width">
+                  <label for="user-state" class="form-label">
+                    <span data-i18n="label_state">State or Union Territory</span> <span class="required">*</span>
+                  </label>
+                  <select id="user-state" class="form-select" required>
+                    <option value="" disabled selected data-i18n="select_state">-- Select State / UT --</option>
+                    <optgroup label="Pan-India">
+                      <option value="all">Pan India / Any State</option>
+                    </optgroup>
+                    <optgroup label="28 States">
+                      <option value="Andhra Pradesh">Andhra Pradesh</option>
+                      <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                      <option value="Assam">Assam</option>
+                      <option value="Bihar">Bihar</option>
+                      <option value="Chhattisgarh">Chhattisgarh</option>
+                      <option value="Goa">Goa</option>
+                      <option value="Gujarat">Gujarat</option>
+                      <option value="Haryana">Haryana</option>
+                      <option value="Himachal Pradesh">Himachal Pradesh</option>
+                      <option value="Jharkhand">Jharkhand</option>
+                      <option value="Karnataka">Karnataka</option>
+                      <option value="Kerala">Kerala</option>
+                      <option value="Madhya Pradesh">Madhya Pradesh</option>
+                      <option value="Maharashtra">Maharashtra</option>
+                      <option value="Manipur">Manipur</option>
+                      <option value="Meghalaya">Meghalaya</option>
+                      <option value="Mizoram">Mizoram</option>
+                      <option value="Nagaland">Nagaland</option>
+                      <option value="Odisha">Odisha</option>
+                      <option value="Punjab">Punjab</option>
+                      <option value="Rajasthan">Rajasthan</option>
+                      <option value="Sikkim">Sikkim</option>
+                      <option value="Tamil Nadu">Tamil Nadu</option>
+                      <option value="Telangana">Telangana</option>
+                      <option value="Tripura">Tripura</option>
+                      <option value="Uttar Pradesh">Uttar Pradesh</option>
+                      <option value="Uttarakhand">Uttarakhand</option>
+                      <option value="West Bengal">West Bengal</option>
+                    </optgroup>
+                    <optgroup label="8 Union Territories">
+                      <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                      <option value="Chandigarh">Chandigarh</option>
+                      <option value="Dadra and Nagar Haveli and Daman and Diu">Dadra and Nagar Haveli and Daman and Diu</option>
+                      <option value="Delhi">Delhi (NCT)</option>
+                      <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                      <option value="Ladakh">Ladakh</option>
+                      <option value="Lakshadweep">Lakshadweep</option>
+                      <option value="Puducherry">Puducherry</option>
+                    </optgroup>
+                  </select>
+                  <div class="error-feedback" id="user-state-error"></div>
+                </div>
+              </div>
+
+              <div class="wizard-step-actions">
+                <button type="button" class="btn btn-secondary" disabled data-i18n="btn_back">Back</button>
+                <button type="button" class="btn btn-primary next-step-btn" data-next="2">
+                  <span data-i18n="btn_continue">Continue</span>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- STEP 2: OCCUPATION & INCOME -->
+            <div class="wizard-step-panel" id="wizard-step-2" role="tabpanel" aria-labelledby="step-indicator-2">
+              <div class="step-panel-header">
+                <h3 class="panel-heading" data-i18n="step2_heading">What is your occupation and family income?</h3>
+                <p class="panel-sub" data-i18n="step2_sub">Benefits are tailored for farmers, students, entrepreneurs, and income tiers.</p>
+              </div>
+
+              <div class="form-grid">
+                <!-- Occupation Select -->
+                <div class="form-group">
+                  <label for="user-occupation" class="form-label">
+                    <span data-i18n="label_occupation">Primary Occupation</span> <span class="required">*</span>
+                  </label>
+                  <select id="user-occupation" class="form-select" required>
+                    <option value="" disabled selected data-i18n="select_occupation">-- Select Occupation --</option>
+                    <option value="farmer" data-i18n="occ_farmer">Farmer / Cultivator / Agri Labourer</option>
+                    <option value="student" data-i18n="occ_student">Student / Scholar</option>
+                    <option value="business" data-i18n="occ_business">Small Business / MSME / Trader</option>
+                    <option value="vendor" data-i18n="occ_vendor">Street Vendor / Hawkers / Artisan</option>
+                    <option value="unorganized" data-i18n="occ_unorganized">Daily Wage / Construction / Domestic Worker</option>
+                    <option value="salaried" data-i18n="occ_salaried">Private / Salaried Employee</option>
+                    <option value="senior" data-i18n="occ_senior">Senior Citizen / Retired</option>
+                    <option value="unemployed" data-i18n="occ_unemployed">Unemployed / Job Seeker</option>
+                  </select>
+                  <div class="error-feedback" id="user-occupation-error"></div>
+                </div>
+
+                <!-- Annual Income Select -->
+                <div class="form-group">
+                  <label for="user-income" class="form-label">
+                    <span data-i18n="label_income">Annual Family Income</span> <span class="required">*</span>
+                  </label>
+                  <select id="user-income" class="form-select" required>
+                    <option value="" disabled selected data-i18n="select_income">-- Select Income Range --</option>
+                    <option value="100000" data-i18n="inc_below_1l">Below ₹1,00,000 / year (BPL Tier)</option>
+                    <option value="250000" data-i18n="inc_1_25l">₹1,00,000 to ₹2,50,000 / year</option>
+                    <option value="500000" data-i18n="inc_25_5l">₹2,50,000 to ₹5,00,000 / year</option>
+                    <option value="800000" data-i18n="inc_5_8l">₹5,00,000 to ₹8,00,000 / year (EWS Cap)</option>
+                    <option value="1500000" data-i18n="inc_above_8l">Above ₹8,00,000 / year</option>
+                  </select>
+                  <div class="error-feedback" id="user-income-error"></div>
+                </div>
+
+                <!-- Landholding (Visible/Relevant for Farmers or general) -->
+                <div class="form-group full-width">
+                  <label for="user-land" class="form-label" data-i18n="label_land">Agricultural Land Ownership</label>
+                  <select id="user-land" class="form-select">
+                    <option value="none" selected data-i18n="land_none">No agricultural land owned</option>
+                    <option value="marginal" data-i18n="land_marginal">Marginal Farmer (Up to 2.5 acres / 1 hectare)</option>
+                    <option value="small" data-i18n="land_small">Small Farmer (2.5 to 5 acres / 1 - 2 hectares)</option>
+                    <option value="large" data-i18n="land_large">Medium / Large Farmer (More than 5 acres)</option>
+                  </select>
+                  <span class="field-hint" data-i18n="hint_land">Needed for schemes like PM-KISAN & State Rythu programs</span>
+                </div>
+              </div>
+
+              <div class="wizard-step-actions">
+                <button type="button" class="btn btn-secondary prev-step-btn" data-prev="1">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                  <span data-i18n="btn_back">Back</span>
+                </button>
+                <button type="button" class="btn btn-primary next-step-btn" data-next="3">
+                  <span data-i18n="btn_continue">Continue</span>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- STEP 3: CATEGORY & SPECIAL CRITERIA -->
+            <div class="wizard-step-panel" id="wizard-step-3" role="tabpanel" aria-labelledby="step-indicator-3">
+              <div class="step-panel-header">
+                <h3 class="panel-heading" data-i18n="step3_heading">Special Criteria & Inclusion Categories</h3>
+                <p class="panel-sub" data-i18n="step3_sub">Several flagship initiatives have specialized quotas, subsidies, or relaxed criteria.</p>
+              </div>
+
+              <div class="form-grid">
+                <!-- Social Category -->
+                <div class="form-group">
+                  <label for="user-category" class="form-label">
+                    <span data-i18n="label_category">Social Category</span> <span class="required">*</span>
+                  </label>
+                  <select id="user-category" class="form-select" required>
+                    <option value="General" selected data-i18n="cat_general">General</option>
+                    <option value="OBC" data-i18n="cat_obc">OBC (Other Backward Classes)</option>
+                    <option value="SC" data-i18n="cat_sc">SC (Scheduled Caste)</option>
+                    <option value="ST" data-i18n="cat_st">ST (Scheduled Tribe)</option>
+                    <option value="EWS" data-i18n="cat_ews">EWS (Economically Weaker Section)</option>
+                    <option value="Minority" data-i18n="cat_minority">Minority Community</option>
+                  </select>
+                </div>
+
+                <!-- Differently Abled Status -->
+                <div class="form-group">
+                  <label for="user-disability" class="form-label" data-i18n="label_disability">Person with Disability (Divyangjan)?</label>
+                  <select id="user-disability" class="form-select">
+                    <option value="no" selected data-i18n="opt_no">No</option>
+                    <option value="yes" data-i18n="opt_yes">Yes (40% or more benchmark disability)</option>
+                  </select>
+                </div>
+
+                <!-- Checkboxes: Girl Child & BPL Card -->
+                <div class="form-group full-width">
+                  <div class="checkbox-cards-group">
+                    <label class="custom-checkbox-card">
+                      <input type="checkbox" id="user-girl-child">
+                      <div class="checkbox-card-content">
+                        <strong data-i18n="label_girl_child">Family has girl child under 10 years</strong>
+                        <span data-i18n="desc_girl_child">Enables Sukanya Samriddhi and dedicated girl education schemes</span>
+                      </div>
+                    </label>
+
+                    <label class="custom-checkbox-card">
+                      <input type="checkbox" id="user-bpl">
+                      <div class="checkbox-card-content">
+                        <strong data-i18n="label_ration">Holds Ration Card / BPL / Antyodaya Card</strong>
+                        <span data-i18n="desc_ration">Prioritizes Ayushman Bharat healthcare and food security programs</span>
+                      </div>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="wizard-step-actions">
+                <button type="button" class="btn btn-secondary prev-step-btn" data-prev="2">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                  <span data-i18n="btn_back">Back</span>
+                </button>
+                <button type="button" class="btn btn-primary next-step-btn" data-next="4">
+                  <span data-i18n="btn_review_match">Review & Match Schemes</span>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- STEP 4: REVIEW & MATCH -->
+            <div class="wizard-step-panel" id="wizard-step-4" role="tabpanel" aria-labelledby="step-indicator-4">
+              <div class="step-panel-header">
+                <h3 class="panel-heading" data-i18n="step4_heading">Confirm Your Profile Summary</h3>
+                <p class="panel-sub" data-i18n="step4_sub">Review your inputs. Click "Discover Matching Benefits" to rank schemes with personalized match scores.</p>
+              </div>
+
+              <!-- Summary Card Grid -->
+              <div class="profile-review-card shadow-sm" id="profile-review-card">
+                <div class="review-grid">
+                  <div class="review-item">
+                    <span class="review-label" data-i18n="rev_age">Age & Gender:</span>
+                    <strong class="review-val" id="rev-age-gender">24 yrs • Female</strong>
+                  </div>
+                  <div class="review-item">
+                    <span class="review-label" data-i18n="rev_state">State:</span>
+                    <strong class="review-val" id="rev-state">Telangana</strong>
+                  </div>
+                  <div class="review-item">
+                    <span class="review-label" data-i18n="rev_occ">Occupation:</span>
+                    <strong class="review-val" id="rev-occupation">Farmer / Cultivator</strong>
+                  </div>
+                  <div class="review-item">
+                    <span class="review-label" data-i18n="rev_income">Annual Income:</span>
+                    <strong class="review-val" id="rev-income">Below ₹1,00,000</strong>
+                  </div>
+                  <div class="review-item">
+                    <span class="review-label" data-i18n="rev_category">Social Category:</span>
+                    <strong class="review-val" id="rev-category">OBC</strong>
+                  </div>
+                  <div class="review-item">
+                    <span class="review-label" data-i18n="rev_special">Special Factors:</span>
+                    <strong class="review-val" id="rev-special">Marginal Landholder • BPL Card</strong>
+                  </div>
+                </div>
+
+                <div class="privacy-guarantee-note">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                  <span data-i18n="privacy_note">Your data is stored in your local browser storage only. No central servers or third-party trackers are utilized.</span>
+                </div>
+              </div>
+
+              <div class="wizard-step-actions">
+                <button type="button" class="btn btn-secondary prev-step-btn" data-prev="3">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                  <span data-i18n="btn_edit">Edit Answers</span>
+                </button>
+                <button type="button" id="execute-match-btn" class="btn btn-primary btn-lg shadow-glow">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span data-i18n="btn_discover_benefits">Discover Matching Benefits Now</span>
+                </button>
+              </div>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. SCHEME DISCOVERY & SEARCH RESULTS SECTION -->
+    <section class="section schemes-section" id="schemes">
+      <div class="container">
+        <!-- Section Header with Match Count -->
+        <div class="schemes-top-header">
+          <div>
+            <span class="section-tag" data-i18n="schemes_tag">Curated Benefits Catalog</span>
+            <h2 class="section-title" data-i18n="schemes_title">Explore Government Schemes</h2>
+            <p class="section-subtitle" data-i18n="schemes_subtitle">
+              Verified central and state programs with accurate eligibility rules, required documents, and official application portals.
+            </p>
+          </div>
+
+          <!-- Active Profile Match Filter Banner (Shows if profile is filled) -->
+          <div class="active-profile-banner" id="active-profile-banner" style="display:none;">
+            <div class="banner-content">
+              <span class="banner-icon">🎯</span>
+              <span class="banner-text" id="banner-profile-text">Showing matches personalized for your profile</span>
+            </div>
+            <button type="button" id="clear-profile-filter-btn" class="btn-text-sm" data-i18n="clear_profile">Clear Profile Filter</button>
+          </div>
+        </div>
+
+        <!-- Filter & Search Controls Toolbar -->
+        <div class="filter-toolbar shadow-sm">
+          <!-- Search Bar -->
+          <div class="search-input-box">
+            <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <input 
+              type="text" 
+              id="scheme-search-input" 
+              class="scheme-search-field" 
+              placeholder="Search by scheme name, keyword, or benefit amount..." 
+              data-i18n-ph="search_schemes_ph"
+              aria-label="Search schemes"
+            >
+            <button type="button" id="clear-search-btn" class="clear-search-btn" aria-label="Clear search text" style="display:none;">✕</button>
+          </div>
+
+          <!-- Filter Dropdowns Row -->
+          <div class="filter-dropdowns">
+            <!-- State Filter -->
+            <div class="filter-group">
+              <label for="filter-state" class="visually-hidden">Filter by State</label>
+              <select id="filter-state" class="filter-select">
+                <option value="all" data-i18n="filter_all_states">All States / Central</option>
+                <optgroup label="28 States">
+                  <option value="Andhra Pradesh">Andhra Pradesh</option>
+                  <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                  <option value="Assam">Assam</option>
+                  <option value="Bihar">Bihar</option>
+                  <option value="Chhattisgarh">Chhattisgarh</option>
+                  <option value="Goa">Goa</option>
+                  <option value="Gujarat">Gujarat</option>
+                  <option value="Haryana">Haryana</option>
+                  <option value="Himachal Pradesh">Himachal Pradesh</option>
+                  <option value="Jharkhand">Jharkhand</option>
+                  <option value="Karnataka">Karnataka</option>
+                  <option value="Kerala">Kerala</option>
+                  <option value="Madhya Pradesh">Madhya Pradesh</option>
+                  <option value="Maharashtra">Maharashtra</option>
+                  <option value="Manipur">Manipur</option>
+                  <option value="Meghalaya">Meghalaya</option>
+                  <option value="Mizoram">Mizoram</option>
+                  <option value="Nagaland">Nagaland</option>
+                  <option value="Odisha">Odisha</option>
+                  <option value="Punjab">Punjab</option>
+                  <option value="Rajasthan">Rajasthan</option>
+                  <option value="Sikkim">Sikkim</option>
+                  <option value="Tamil Nadu">Tamil Nadu</option>
+                  <option value="Telangana">Telangana</option>
+                  <option value="Tripura">Tripura</option>
+                  <option value="Uttar Pradesh">Uttar Pradesh</option>
+                  <option value="Uttarakhand">Uttarakhand</option>
+                  <option value="West Bengal">West Bengal</option>
+                </optgroup>
+                <optgroup label="8 Union Territories">
+                  <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                  <option value="Chandigarh">Chandigarh</option>
+                  <option value="Dadra and Nagar Haveli and Daman and Diu">Dadra and Nagar Haveli and Daman and Diu</option>
+                  <option value="Delhi">Delhi (NCT)</option>
+                  <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                  <option value="Ladakh">Ladakh</option>
+                  <option value="Lakshadweep">Lakshadweep</option>
+                  <option value="Puducherry">Puducherry</option>
+                </optgroup>
+              </select>
+            </div>
+
+            <!-- Government Level Filter -->
+            <div class="filter-group">
+              <label for="filter-level" class="visually-hidden">Filter by Level</label>
+              <select id="filter-level" class="filter-select">
+                <option value="all">All Levels (Central, State & UT)</option>
+                <option value="Central">Central Govt Schemes (Pan-India)</option>
+                <option value="State">State Govt Schemes</option>
+                <option value="Union Territory">Union Territory Schemes</option>
+              </select>
+            </div>
+
+            <!-- Sort By -->
+            <div class="filter-group">
+              <label for="filter-sort" class="visually-hidden">Sort Schemes</label>
+              <select id="filter-sort" class="filter-select">
+                <option value="relevance" data-i18n="sort_relevance">Sort: Highest Match %</option>
+                <option value="amount" data-i18n="sort_amount">Sort: Max Benefit Value</option>
+                <option value="name" data-i18n="sort_name">Sort: Scheme Name (A-Z)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Category Filter Tabs -->
+        <div class="category-tabs" role="tablist" aria-label="Filter schemes by category">
+          <button type="button" class="category-tab active" data-category="all" role="tab" aria-selected="true">
+            <span class="tab-icon">🌟</span>
+            <span data-i18n="cat_all">All Categories</span>
+          </button>
+          <button type="button" class="category-tab" data-category="agriculture" role="tab" aria-selected="false">
+            <span class="tab-icon">🌾</span>
+            <span data-i18n="cat_agriculture">Agriculture & Farmers</span>
+          </button>
+          <button type="button" class="category-tab" data-category="education" role="tab" aria-selected="false">
+            <span class="tab-icon">🎓</span>
+            <span data-i18n="cat_education">Education & Youth</span>
+          </button>
+          <button type="button" class="category-tab" data-category="health" role="tab" aria-selected="false">
+            <span class="tab-icon">🏥</span>
+            <span data-i18n="cat_health">Health & Wellness</span>
+          </button>
+          <button type="button" class="category-tab" data-category="business" role="tab" aria-selected="false">
+            <span class="tab-icon">💼</span>
+            <span data-i18n="cat_business">Business & MSME</span>
+          </button>
+          <button type="button" class="category-tab" data-category="women" role="tab" aria-selected="false">
+            <span class="tab-icon">🌸</span>
+            <span data-i18n="cat_women">Women & Children</span>
+          </button>
+          <button type="button" class="category-tab" data-category="housing" role="tab" aria-selected="false">
+            <span class="tab-icon">🏠</span>
+            <span data-i18n="cat_housing">Housing & Shelter</span>
+          </button>
+          <button type="button" class="category-tab" data-category="energy" role="tab" aria-selected="false">
+            <span class="tab-icon">⚡</span>
+            <span data-i18n="cat_energy">Solar & Energy</span>
+          </button>
+          <button type="button" class="category-tab" data-category="social" role="tab" aria-selected="false">
+            <span class="tab-icon">🛡️</span>
+            <span data-i18n="cat_social">Social Security & Pension</span>
+          </button>
+        </div>
+
+        <!-- Schemes Count and Active Indicators -->
+        <div class="results-meta-bar">
+          <div class="count-indicator">
+            <span data-i18n="showing_schemes">Showing</span> <strong id="results-count">0</strong> <span data-i18n="schemes_found">schemes</span>
+          </div>
+          <div class="meta-note">
+            <span class="sample-data-tag" data-i18n="sample_data_note">Verified Demonstration Records • Real Criteria</span>
+          </div>
+        </div>
+
+        <!-- Skeleton Loading State (Shown during filter updates) -->
+        <div class="schemes-skeleton-grid" id="schemes-skeleton" style="display:none;" aria-hidden="true">
+          <div class="skeleton-card">
+            <div class="skeleton-shimmer line-sm"></div>
+            <div class="skeleton-shimmer line-title"></div>
+            <div class="skeleton-shimmer line-desc"></div>
+            <div class="skeleton-shimmer line-desc-short"></div>
+            <div class="skeleton-tags-row">
+              <div class="skeleton-shimmer tag-box"></div>
+              <div class="skeleton-shimmer tag-box"></div>
+              <div class="skeleton-shimmer tag-box"></div>
+            </div>
+            <div class="skeleton-shimmer line-btn"></div>
+          </div>
+          <div class="skeleton-card">
+            <div class="skeleton-shimmer line-sm"></div>
+            <div class="skeleton-shimmer line-title"></div>
+            <div class="skeleton-shimmer line-desc"></div>
+            <div class="skeleton-shimmer line-desc-short"></div>
+            <div class="skeleton-tags-row">
+              <div class="skeleton-shimmer tag-box"></div>
+              <div class="skeleton-shimmer tag-box"></div>
+              <div class="skeleton-shimmer tag-box"></div>
+            </div>
+            <div class="skeleton-shimmer line-btn"></div>
+          </div>
+          <div class="skeleton-card">
+            <div class="skeleton-shimmer line-sm"></div>
+            <div class="skeleton-shimmer line-title"></div>
+            <div class="skeleton-shimmer line-desc"></div>
+            <div class="skeleton-shimmer line-desc-short"></div>
+            <div class="skeleton-tags-row">
+              <div class="skeleton-shimmer tag-box"></div>
+              <div class="skeleton-shimmer tag-box"></div>
+              <div class="skeleton-shimmer tag-box"></div>
+            </div>
+            <div class="skeleton-shimmer line-btn"></div>
+          </div>
+        </div>
+
+        <!-- Results Grid Container -->
+        <div class="schemes-grid" id="schemes-grid" role="region" aria-label="Scheme Search Results">
+          <!-- Dynamically populated by script.js -->
+        </div>
+
+        <!-- Empty State (When no schemes match current query) -->
+        <div class="empty-results-state" id="empty-state" style="display:none;">
+          <div class="empty-icon-circle">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#64748B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+          </div>
+          <h3 class="empty-heading" data-i18n="empty_title">No matching schemes found</h3>
+          <p class="empty-desc" data-i18n="empty_desc">Try relaxing your search terms, changing the category tab, or broadening your state filter.</p>
+          <button type="button" id="reset-filters-btn" class="btn btn-outline" data-i18n="btn_reset_filters">Reset All Filters</button>
+        </div>
+
+        <!-- Schemes Pagination Toolbar -->
+        <div class="schemes-pagination-toolbar" id="schemes-pagination-toolbar" style="display:none;">
+          <div class="pagination-info" id="pagination-info">
+            Showing <strong id="pagination-range">1-12</strong> of <strong id="pagination-total">0</strong> verified schemes
+          </div>
+          <div class="pagination-controls" id="pagination-controls">
+            <button type="button" class="btn-page-nav" id="btn-prev-page" aria-label="Previous Page" disabled>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+              <span>Previous</span>
+            </button>
+            <div class="page-numbers-group" id="page-numbers-group" role="navigation" aria-label="Pagination Navigation">
+              <!-- Dynamically populated page buttons -->
+            </div>
+            <button type="button" class="btn-page-nav" id="btn-next-page" aria-label="Next Page">
+              <span>Next</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. HOW IT WORKS SECTION -->
+    <section class="section how-it-works-section" id="how-it-works">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag" data-i18n="how_tag">Transparent & Simple</span>
+          <h2 class="section-title" data-i18n="how_title">How SchemeFinder Works</h2>
+          <p class="section-subtitle" data-i18n="how_subtitle">
+            Three intuitive steps connecting citizens directly to eligible government welfare programs.
+          </p>
+        </div>
+
+        <div class="steps-grid">
+          <!-- Step 1 -->
+          <div class="step-card shadow-md">
+            <div class="step-badge-number">01</div>
+            <div class="step-icon-box">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
+            </div>
+            <h3 class="step-card-title" data-i18n="how_step1_title">Tell Us About Your Needs</h3>
+            <p class="step-card-desc" data-i18n="how_step1_desc">
+              Speak naturally in Telugu, Hindi, or English via voice assistant, or complete our 60-second eligibility wizard. No private Aadhaar or confidential documents are ever requested.
+            </p>
+            <a href="#assistant" class="step-action-link" data-i18n="how_step1_link">Try Voice Search →</a>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="step-card shadow-md">
+            <div class="step-badge-number">02</div>
+            <div class="step-icon-box">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="12 6 12 12 16 14"></polygon><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+            </div>
+            <h3 class="step-card-title" data-i18n="how_step2_title">Discover Potentially Relevant Schemes</h3>
+            <p class="step-card-desc" data-i18n="how_step2_desc">
+              Our intelligent client-side rule engine compares your age, occupation, state, and income against thousands of public welfare conditions, ranking programs by match confidence.
+            </p>
+            <a href="#schemes" class="step-action-link" data-i18n="how_step2_link">Browse All Schemes →</a>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="step-card shadow-md">
+            <div class="step-badge-number">03</div>
+            <div class="step-icon-box">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+            </div>
+            <h3 class="step-card-title" data-i18n="how_step3_title">Review Eligibility & Official Sources</h3>
+            <p class="step-card-desc" data-i18n="how_step3_desc">
+              Inspect criteria side-by-side with your profile, tick off required documents, and follow direct verified links to apply on official government portals (.gov.in / .nic.in).
+            </p>
+            <a href="#profile-wizard" class="step-action-link" data-i18n="how_step3_link">Start Wizard →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 6. DETAILED ELIGIBILITY MODAL -->
+  <div id="eligibility-modal" class="modal-backdrop" aria-hidden="true" role="dialog" aria-labelledby="modal-scheme-title">
+    <div class="modal-dialog shadow-2xl">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <div class="modal-header-titles">
+          <div class="modal-dept-badge" id="modal-scheme-dept">Ministry of Agriculture</div>
+          <h2 class="modal-title" id="modal-scheme-title">PM-KISAN: Pradhan Mantri Kisan Samman Nidhi</h2>
+        </div>
+        <button type="button" class="modal-close-btn" id="modal-close-btn" aria-label="Close eligibility details">✕</button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="modal-body" id="modal-body-content">
+        <!-- Overview Banner -->
+        <div class="modal-summary-card">
+          <div class="summary-stat-row">
+            <div class="stat-box">
+              <span class="stat-label" data-i18n="modal_benefit">Benefit Amount</span>
+              <strong class="stat-value text-teal" id="modal-benefit-amt">₹6,000 / Year</strong>
+            </div>
+            <div class="stat-box">
+              <span class="stat-label" data-i18n="modal_match_score">Match Confidence</span>
+              <strong class="stat-value" id="modal-match-score">95% Match</strong>
+            </div>
+            <div class="stat-box">
+              <span class="stat-label" data-i18n="modal_scope">Applicability</span>
+              <strong class="stat-value text-indigo" id="modal-scope">Central Scheme (All States)</strong>
+            </div>
+          </div>
+          <p class="modal-desc-text" id="modal-scheme-desc">
+            Direct income support transfer to small and marginal farmers across India in three equal installments.
+          </p>
+        </div>
+
+        <!-- Section 1: Detailed Rule Comparison (User vs Scheme Criteria) -->
+        <div class="modal-section">
+          <h3 class="modal-subheading" data-i18n="modal_criteria_heading">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><polyline points="16 11 18 13 22 9"></polyline></svg>
+            Eligibility Criteria Comparison
+          </h3>
+          <p class="modal-help-text" data-i18n="modal_criteria_sub">How your current profile compares against the official rule parameters:</p>
+
+          <div class="criteria-table-container">
+            <table class="criteria-table">
+              <thead>
+                <tr>
+                  <th data-i18n="th_rule">Parameter</th>
+                  <th data-i18n="th_scheme_req">Scheme Requirement</th>
+                  <th data-i18n="th_your_info">Your Information</th>
+                  <th data-i18n="th_status">Status</th>
+                </tr>
+              </thead>
+              <tbody id="criteria-comparison-tbody">
+                <!-- Injected via JS -->
+              </tbody>
+            </table>
+          </div>
+
+          <div class="missing-info-warning" id="missing-info-warning" style="display:none;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+            <span id="missing-info-text">Complete your profile in the Eligibility Wizard to view exact parameter matching.</span>
+          </div>
+        </div>
+
+        <!-- Section 2: Required Documents Checklist -->
+        <div class="modal-section">
+          <div class="doc-header-row">
+            <h3 class="modal-subheading" data-i18n="modal_docs_heading">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+              Required Documents Readiness
+            </h3>
+            <span class="doc-progress-tag" id="doc-readiness-pct">0 / 4 Ready (0%)</span>
+          </div>
+          <p class="modal-help-text" data-i18n="modal_docs_sub">Check off the documents you currently hold ready for submission:</p>
+
+          <div class="doc-checklist-group" id="doc-checklist-container">
+            <!-- Injected via JS -->
+          </div>
+        </div>
+
+        <!-- Section 3: Official Application Guidance -->
+        <div class="modal-section">
+          <h3 class="modal-subheading" data-i18n="modal_steps_heading">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+            How to Apply Officially
+          </h3>
+          <div class="application-steps-list" id="modal-app-steps">
+            <!-- Injected via JS -->
+          </div>
+        </div>
+
+        <!-- Section 4: Mandatory Public Disclaimer -->
+        <div class="official-disclaimer-box" role="note">
+          <div class="disclaimer-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#64748B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+            <strong data-i18n="disclaimer_heading">Important Public Advisory</strong>
+          </div>
+          <p class="disclaimer-text" data-i18n="disclaimer_body">
+            Final eligibility, verification, and disbursement are determined solely by the competent government department or nodal bank. SchemeFinder is an independent citizen discovery service and does not guarantee sanction, provide approvals, or collect government processing fees.
+          </p>
+        </div>
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="modal-footer">
+        <div class="footer-left">
+          <button type="button" class="btn btn-secondary btn-sm" id="print-checklist-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+            <span data-i18n="btn_print">Print Document Checklist</span>
+          </button>
+        </div>
+        <div class="footer-right">
+          <button type="button" class="btn btn-secondary" id="modal-cancel-btn" data-i18n="btn_close">Close</button>
+          <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-primary" id="modal-official-link">
+            <span data-i18n="btn_visit_portal">Visit Official Portal</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. SAVED SCHEMES DRAWER -->
+  <div id="saved-drawer" class="drawer-backdrop" aria-hidden="true" role="dialog" aria-labelledby="saved-drawer-title">
+    <div class="drawer-panel shadow-2xl">
+      <div class="drawer-header">
+        <div class="drawer-title-group">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+          <h2 class="drawer-title" id="saved-drawer-title" data-i18n="saved_title">Saved Schemes</h2>
+        </div>
+        <button type="button" class="close-btn" id="close-saved-drawer" aria-label="Close saved drawer">✕</button>
+      </div>
+
+      <div class="drawer-body" id="saved-schemes-list">
+        <!-- Dynamically injected saved items -->
+      </div>
+
+      <div class="drawer-footer">
+        <button type="button" class="btn btn-outline btn-block" id="clear-all-saved-btn" data-i18n="btn_clear_saved">Clear All Saved</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8. ACCESSIBILITY MODAL -->
+  <div id="accessibility-modal" class="modal-backdrop" aria-hidden="true" role="dialog" aria-labelledby="a11y-modal-title">
+    <div class="modal-dialog modal-sm shadow-2xl">
+      <div class="modal-header">
+        <h2 class="modal-title" id="a11y-modal-title" data-i18n="a11y_title">Accessibility Preferences</h2>
+        <button type="button" class="modal-close-btn" id="close-a11y-modal" aria-label="Close accessibility modal">✕</button>
+      </div>
+      <div class="modal-body">
+        <!-- High Contrast Mode Toggle -->
+        <div class="a11y-option-item">
+          <div>
+            <strong data-i18n="a11y_contrast">High Contrast Mode</strong>
+            <p class="text-muted text-sm" data-i18n="a11y_contrast_sub">Enhances contrast and borders for low-vision readability.</p>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="a11y-contrast-toggle">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+
+        <!-- Font Size Scaler -->
+        <div class="a11y-option-item column">
+          <div class="mb-2">
+            <strong data-i18n="a11y_text_size">Text Size Adjustment</strong>
+            <p class="text-muted text-sm" data-i18n="a11y_text_sub">Adjust typography scaling across the application.</p>
+          </div>
+          <div class="font-scale-buttons">
+            <button type="button" class="font-size-btn active" data-scale="1" id="font-scale-normal">A (Normal)</button>
+            <button type="button" class="font-size-btn" data-scale="1.15" id="font-scale-large">A+ (Large)</button>
+            <button type="button" class="font-size-btn" data-scale="1.3" id="font-scale-xlarge">A++ (Extra)</button>
+          </div>
+        </div>
+
+        <!-- Reduced Motion Toggle -->
+        <div class="a11y-option-item">
+          <div>
+            <strong data-i18n="a11y_motion">Reduce Animations</strong>
+            <p class="text-muted text-sm" data-i18n="a11y_motion_sub">Minimizes screen motion and transitions.</p>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="a11y-motion-toggle">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary btn-block" id="save-a11y-btn" data-i18n="btn_done">Save Preferences</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- SITE FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-top-grid">
+        <!-- Footer Column 1: Brand -->
+        <div class="footer-brand-col">
+          <div class="brand-identity">
+            <div class="brand-logo-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                <path d="M2 17l10 5 10-5"></path>
+                <path d="M2 12l10 5 10-5"></path>
+              </svg>
+            </div>
+            <span class="brand-name">SchemeFinder</span>
+          </div>
+          <p class="footer-mission" data-i18n="footer_mission">
+            Empowering every Indian citizen to discover welfare entitlements easily through voice, vernacular languages, and transparent criteria matching.
+          </p>
+          <div class="footer-langs">
+            <span class="text-muted text-sm" data-i18n="available_in">Available in:</span>
+            <span class="lang-tag">English</span>
+            <span class="lang-tag">తెలుగు</span>
+            <span class="lang-tag">हिंदी</span>
+          </div>
+        </div>
+
+        <!-- Footer Column 2: Quick Links -->
+        <div class="footer-col">
+          <h4 class="footer-col-title" data-i18n="footer_nav">Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="#hero" data-i18n="nav_home">Home</a></li>
+            <li><a href="#assistant" data-i18n="nav_assistant">Voice Assistant</a></li>
+            <li><a href="#profile-wizard" data-i18n="nav_wizard">Eligibility Wizard</a></li>
+            <li><a href="#schemes" data-i18n="nav_schemes">Discover Schemes</a></li>
+            <li><a href="#how-it-works" data-i18n="nav_how_it_works">How It Works</a></li>
+          </ul>
+        </div>
+
+        <!-- Footer Column 3: Verified Portals -->
+        <div class="footer-col">
+          <h4 class="footer-col-title" data-i18n="footer_portals">Official Portals</h4>
+          <ul class="footer-links">
+            <li><a href="https://www.myscheme.gov.in" target="_blank" rel="noopener">myScheme India ↗</a></li>
+            <li><a href="https://pmkisan.gov.in" target="_blank" rel="noopener">PM-KISAN Portal ↗</a></li>
+            <li><a href="https://pmjay.gov.in" target="_blank" rel="noopener">Ayushman Bharat NHA ↗</a></li>
+            <li><a href="https://scholarships.gov.in" target="_blank" rel="noopener">National Scholarship Portal ↗</a></li>
+            <li><a href="https://www.mudra.org.in" target="_blank" rel="noopener">MUDRA Portal ↗</a></li>
+          </ul>
+        </div>
+
+        <!-- Footer Column 4: Public Transparency -->
+        <div class="footer-col">
+          <h4 class="footer-col-title" data-i18n="footer_trust">Citizen Trust</h4>
+          <div class="trust-badge-card">
+            <div class="trust-badge-header">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+              <strong data-i18n="trust_title">Open Discovery Standard</strong>
+            </div>
+            <p class="trust-badge-text" data-i18n="trust_desc">
+              This client-side application evaluates publicly published scheme guidelines. All names and logos are copyright of their respective ministries.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-copyright">
+          © 2026 Government Scheme Finder • Built with pride for Indian Citizen Welfare
+        </div>
+        <div class="footer-sub-links">
+          <span class="badge badge-accent" data-i18n="footer_status">National Hackathon Demonstration Edition</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Application Script -->
+  <script src="script.js" defer></script>
+</body>
+</html>

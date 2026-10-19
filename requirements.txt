@@ -1,0 +1,2 @@
+# Python dependencies for Government Scheme Finder
+Flask>=3.0.0
